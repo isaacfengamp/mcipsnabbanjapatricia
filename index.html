@@ -6,11 +6,16 @@
 <title>Nabbanja Patricia | Procurement Officer</title>
 
 <style>
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -19,22 +24,55 @@ body {
 
 /* HEADER */
 header {
+    position: sticky;
+    top: 0;
     background: #0a3d62;
     color: white;
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    align-items: center;
+    z-index: 1000;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+/* NAV */
+nav {
+    display: flex;
+    gap: 20px;
 }
 
 nav a {
     color: white;
-    margin-left: 15px;
     text-decoration: none;
+    position: relative;
 }
 
-nav a:hover {
-    color: orange;
+/* underline animation */
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: orange;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* MOBILE MENU */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 /* HERO */
@@ -54,7 +92,7 @@ nav a:hover {
     object-fit: cover;
 }
 
-/* BUTTONS */
+/* BUTTON */
 .btn {
     display: inline-block;
     margin-top: 15px;
@@ -70,7 +108,7 @@ nav a:hover {
     background: #ff7b00;
 }
 
-/* SECTIONS */
+/* SECTION */
 section {
     max-width: 1000px;
     margin: auto;
@@ -97,15 +135,20 @@ h2 {
     right: 20px;
     background: #25D366;
     color: white;
-    font-size: 24px;
-    padding: 15px;
-    border-radius: 50%;
+    padding: 12px 18px;
+    border-radius: 50px;
+    font-size: 14px;
     text-decoration: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: pulse 2s infinite;
 }
 
-.whatsapp:hover {
-    background: #1ebe5d;
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37,211,102, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(37,211,102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102, 0); }
 }
 
 /* FOOTER */
@@ -117,19 +160,37 @@ footer {
 }
 
 /* RESPONSIVE */
-@media(max-width:600px){
+@media(max-width:768px){
     nav {
-        margin-top: 10px;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #0a3d62;
+        flex-direction: column;
+        width: 200px;
+        display: none;
+        padding: 20px;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
     }
 }
 </style>
-
 </head>
+
 <body>
 
 <header>
-    <h1>Nabbanja Patricia</h1>
-    <nav>
+    <div class="logo">Nabbanja Patricia</div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <nav id="navMenu">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#education">Education</a>
@@ -146,7 +207,6 @@ footer {
 
     <p>Strategic • Analytical • Results-Driven</p>
 
-    <!-- CV DOWNLOAD BUTTON -->
     <a href="cv.pdf" download class="btn">Download CV</a>
 </section>
 
@@ -156,8 +216,8 @@ footer {
 
     <div class="card">
         <p>
-            I’m a Procurement and Supply Chain professional with a strong focus on sourcing, logistics, and inventory management.
-            I enjoy finding practical ways to reduce costs and improve efficiency.
+            I’m a Procurement and Supply Chain professional with a strong focus on sourcing, logistics, and inventory management. 
+            I enjoy finding practical ways to reduce costs, improve efficiency, and keep operations running smoothly.
         </p>
     </div>
 
@@ -170,6 +230,17 @@ footer {
             <li>Strategic Sourcing</li>
         </ul>
     </div>
+
+    <div class="card">
+        <h3>Interests</h3>
+        <ul>
+            <li>Traveling and exploring new places</li>
+            <li>Fitness and wellness activities</li>
+            <li>Networking and meeting new people</li>
+            <li>Music and social events</li>
+            <li>Reading and personal development</li>
+        </ul>
+    </div>
 </section>
 
 <!-- EDUCATION -->
@@ -177,7 +248,7 @@ footer {
     <h2>Education</h2>
 
     <div class="card">
-        <p>Procurement and Logistics – :contentReference[oaicite:0]{index=0}</p>
+        <p>Procurement and Logistics – Makerere University Business School (MUBS)</p>
     </div>
 
     <div class="card">
@@ -185,7 +256,7 @@ footer {
     </div>
 
     <div class="card">
-        <p>Lubiri High School</p>
+        <p>Lubiri Secondary School</p>
     </div>
 </section>
 
@@ -194,7 +265,8 @@ footer {
     <h2>Contact</h2>
 
     <div class="card">
-        <p><strong>Phone:</strong> 0775767776</p>
+        <p><strong>Name:</strong> MCIPS Nabbanja Patricia</p>
+        <p><strong>Phone:</strong> 256754399094</p>
         <p><strong>Email:</strong> nabanja@gmail.com</p>
     </div>
 </section>
@@ -203,8 +275,16 @@ footer {
     <p>© 2026 Nabbanja Patricia</p>
 </footer>
 
-<!-- WHATSAPP FLOATING BUTTON -->
-<a href="https://wa.me/256775767776" target="_blank" class="whatsapp">💬</a>
+<!-- WHATSAPP -->
+<a href="https://wa.me/256754399094" target="_blank" class="whatsapp">
+    💬 Chat on WhatsApp
+</a>
+
+<script>
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
