@@ -1,648 +1,638 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nabbanja Patricia | Procurement & Supply Chain Professional</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nabbanja Patricia, MCIPS | Procurement & Supply Chain Professional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#0A1F33;
+    --navy-900:#0E2C48;
+    --navy-700:#1B4770;
+    --paper:#EEF1F5;
+    --paper-card:#FFFFFF;
+    --ink:#132238;
+    --ink-soft:#4A5A70;
+    --copper:#B8752E;
+    --copper-dark:#8F5A20;
+    --stamp-red:#A23B2E;
+    --line:#D6DCE4;
+    --radius:10px;
+    --shadow:0 10px 30px rgba(10,31,51,0.08);
+  }
 
-        html {
-            scroll-behavior: smooth;
-        }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', Arial, sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation:none !important; transition:none !important; }
+  }
 
-        body {
-            background: #f4f6f9;
-            color: #333;
-            line-height: 1.6;
-        }
+  h1,h2,h3{ font-family:'Fraunces', serif; color:var(--navy-950); }
+  .mono{ font-family:'IBM Plex Mono', monospace; letter-spacing:0.04em; }
 
-        header {
-            position: sticky;
-            top: 0;
-            background: #0a3d62;
-            color: white;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+  a{ color:inherit; }
+  img{ display:block; max-width:100%; }
 
-        .logo {
-            font-weight: 700;
-            font-size: 1.4rem;
-            letter-spacing: 0.5px;
-        }
+  /* ---------- Skip link ---------- */
+  .skip-link{
+    position:absolute; left:-999px; top:0; background:var(--copper); color:#fff;
+    padding:10px 18px; z-index:2000; border-radius:0 0 6px 0;
+  }
+  .skip-link:focus{ left:0; }
 
-        .logo span {
-            color: #ff9800;
-        }
+  /* ---------- Header / Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:1000;
+    background:rgba(14,44,72,0.96);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .header-inner{
+    max-width:1180px; margin:0 auto;
+    padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    text-decoration:none;
+  }
+  .brand-mark{
+    width:38px; height:38px; border-radius:50%;
+    border:1.5px solid var(--copper);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:600; font-size:1rem;
+    color:var(--copper);
+    flex-shrink:0;
+  }
+  .brand-text{ color:#fff; }
+  .brand-text strong{ font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; display:block; }
+  .brand-text span{ font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:#9FB3C8; letter-spacing:0.08em; text-transform:uppercase; }
 
-        nav {
-            display: flex;
-            gap: 25px;
-        }
+  nav{ display:flex; align-items:center; gap:4px; }
+  nav a{
+    color:#D7E1EC; text-decoration:none; font-weight:500; font-size:0.92rem;
+    padding:9px 16px; border-radius:6px; position:relative;
+    transition:color 0.2s, background 0.2s;
+  }
+  nav a:hover{ color:#fff; background:rgba(255,255,255,0.06); }
+  nav a.active{ color:#fff; }
+  nav a.active::after{
+    content:''; position:absolute; left:16px; right:16px; bottom:4px; height:2px;
+    background:var(--copper); border-radius:2px;
+  }
+  nav a.cta-nav{
+    background:var(--copper); color:#fff; margin-left:8px;
+    padding:9px 18px; font-weight:600;
+  }
+  nav a.cta-nav:hover{ background:var(--copper-dark); }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            position: relative;
-            padding: 5px 0;
-            transition: color 0.3s;
-        }
+  .menu-toggle{
+    display:none; background:none; border:none; cursor:pointer;
+    width:40px; height:40px; position:relative; z-index:1100;
+  }
+  .menu-toggle span{
+    display:block; width:22px; height:2px; background:#fff; margin:5px auto;
+    transition:transform 0.25s, opacity 0.25s;
+  }
+  .menu-toggle.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .menu-toggle.open span:nth-child(2){ opacity:0; }
+  .menu-toggle.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
 
-        nav a::after {
-            content: "";
-            position: absolute;
-            width: 0%;
-            height: 2px;
-            background: #ff9800;
-            left: 0;
-            bottom: 0;
-            transition: 0.3s;
-        }
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 85% 15%, rgba(184,117,46,0.18), transparent 45%),
+      linear-gradient(160deg, var(--navy-950) 0%, var(--navy-900) 55%, var(--navy-700) 100%);
+    color:#fff;
+    padding:70px 24px 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 90px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 90px);
+    pointer-events:none;
+  }
+  .hero-container{
+    max-width:1180px; margin:0 auto; position:relative;
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--copper);
+    background:rgba(184,117,46,0.12); border:1px solid rgba(184,117,46,0.4);
+    padding:6px 12px; border-radius:20px; margin-bottom:22px;
+  }
+  .eyebrow::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--copper); }
 
-        nav a:hover::after {
-            width: 100%;
-        }
+  .hero-text h1{
+    font-size:clamp(2.1rem, 4vw, 3.1rem); font-weight:600; line-height:1.12; color:#fff;
+    margin-bottom:14px;
+  }
+  .hero-text h1 .accent{ color:var(--copper); }
+  .hero-text .role{
+    font-size:1.15rem; color:#B9C8D8; font-weight:500; margin-bottom:20px;
+  }
+  .hero-text p.lede{
+    font-size:1.02rem; color:#C7D3E0; max-width:520px; margin-bottom:32px;
+  }
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:36px; }
 
-        nav a:hover {
-            color: #ff9800;
-        }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 26px; border-radius:6px; text-decoration:none;
+    font-weight:600; font-size:0.95rem; transition:transform 0.15s, background 0.2s, box-shadow 0.2s;
+    border:1px solid transparent;
+  }
+  .btn-primary{ background:var(--copper); color:#fff; box-shadow:0 8px 20px rgba(184,117,46,0.35); }
+  .btn-primary:hover{ background:var(--copper-dark); transform:translateY(-2px); }
+  .btn-ghost{ background:transparent; color:#fff; border-color:rgba(255,255,255,0.35); }
+  .btn-ghost:hover{ background:rgba(255,255,255,0.08); transform:translateY(-2px); }
 
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-        }
+  .hero-stats{
+    display:flex; gap:28px; flex-wrap:wrap;
+    padding-top:24px; border-top:1px solid rgba(255,255,255,0.14);
+  }
+  .hero-stats .stat strong{
+    display:block; font-family:'Fraunces', serif; font-size:1.4rem; color:#fff;
+  }
+  .hero-stats .stat span{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:#93A6BA;
+  }
 
-        .hero {
-            background: linear-gradient(135deg, #0a3d62 40%, #1e5a84 100%);
-            color: white;
-            padding: 90px 5%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: left;
-        }
+  /* ---------- Manifest card (signature element) ---------- */
+  .manifest-card{
+    background:var(--paper-card);
+    border-radius:14px;
+    padding:22px 22px 26px;
+    box-shadow:0 25px 60px rgba(0,0,0,0.35);
+    position:relative;
+    color:var(--ink);
+  }
+  .manifest-card::before{
+    content:'';
+    position:absolute; top:-9px; left:20px; right:20px; height:18px;
+    background-image:radial-gradient(circle, var(--paper) 6px, transparent 6.5px);
+    background-size:20px 20px;
+    background-position:0 0;
+    background-repeat:repeat-x;
+  }
+  .manifest-head{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    padding-bottom:14px; margin-bottom:16px; border-bottom:1px dashed var(--line);
+  }
+  .manifest-head .label{
+    font-family:'IBM Plex Mono', monospace; font-size:0.65rem; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--ink-soft);
+  }
+  .manifest-head .id{
+    font-family:'IBM Plex Mono', monospace; font-size:0.8rem; color:var(--navy-900); font-weight:600;
+  }
+  .manifest-photo-wrap{
+    position:relative; display:flex; justify-content:center; margin-bottom:16px;
+  }
+  .manifest-photo-wrap img{
+    width:180px; height:180px; border-radius:50%; object-fit:cover;
+    border:4px solid var(--paper); outline:2px solid var(--line);
+  }
+  .stamp{
+    position:absolute; top:-6px; right:calc(50% - 108px);
+    width:76px; height:76px; border-radius:50%;
+    border:2.5px solid var(--stamp-red); color:var(--stamp-red);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-family:'IBM Plex Mono', monospace; font-size:0.6rem; font-weight:700;
+    letter-spacing:0.05em; text-transform:uppercase; line-height:1.15;
+    transform:rotate(14deg);
+    background:rgba(162,59,46,0.04);
+  }
+  .manifest-rows{ display:flex; flex-direction:column; gap:10px; }
+  .manifest-row{
+    display:flex; justify-content:space-between; gap:10px;
+    font-size:0.87rem; padding-bottom:8px; border-bottom:1px solid var(--line);
+  }
+  .manifest-row:last-child{ border-bottom:none; padding-bottom:0; }
+  .manifest-row .k{ color:var(--ink-soft); }
+  .manifest-row .v{ font-weight:600; color:var(--navy-950); text-align:right; }
 
-        .hero-container {
-            max-width: 1100px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 40px;
-            align-items: center;
-        }
+  /* ---------- Sections ---------- */
+  section{ max-width:1180px; margin:0 auto; padding:90px 24px; }
+  .section-header{ margin-bottom:40px; max-width:640px; }
+  .section-eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--copper); margin-bottom:10px; display:block;
+  }
+  h2{ font-size:clamp(1.6rem, 3vw, 2.2rem); font-weight:600; }
+  .section-header p{ color:var(--ink-soft); margin-top:12px; font-size:1rem; }
 
-        .hero-text h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
+  .about-layout{ display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:start; }
+  .card{
+    background:var(--paper-card); padding:32px; border-radius:var(--radius);
+    box-shadow:var(--shadow); margin-bottom:24px; border-top:3px solid var(--navy-900);
+  }
+  .card h3{ font-size:1.15rem; margin-bottom:14px; font-weight:600; }
+  .card p + p{ margin-top:14px; }
 
-        .hero-text h1 span {
-            color: #ff9800;
-        }
+  .about-image-card img{
+    width:100%; max-height:340px; object-fit:cover; border-radius:var(--radius);
+    box-shadow:var(--shadow); margin-bottom:22px; border:1px solid var(--line);
+  }
 
-        .hero-text h3 {
-            font-size: 1.4rem;
-            color: #e2e8f0;
-            font-weight: 400;
-            margin-bottom: 20px;
-        }
+  .skills-tags, .interests-tags{ display:flex; flex-wrap:wrap; gap:10px; list-style:none; }
+  .skills-tags li{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
+    background:var(--navy-900); color:#fff; padding:8px 14px; border-radius:5px; font-weight:500;
+  }
+  .interests-tags li{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
+    background:#FBF0E3; color:var(--copper-dark); padding:8px 14px; border-radius:5px;
+    border:1px solid rgba(184,117,46,0.3); font-weight:500;
+  }
 
-        .hero-text p {
-            font-size: 1.1rem;
-            color: #cbd5e1;
-            margin-bottom: 25px;
-            max-width: 600px;
-        }
+  .education-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px; }
+  .edu-card{
+    background:var(--paper-card); padding:26px; border-radius:var(--radius);
+    box-shadow:var(--shadow); border-left:4px solid var(--copper); position:relative;
+  }
+  .edu-card .badge{
+    position:absolute; top:24px; right:24px; background:var(--navy-900); color:#fff;
+    padding:4px 12px; border-radius:12px; font-size:0.68rem; font-weight:700;
+    font-family:'IBM Plex Mono', monospace; letter-spacing:0.05em; text-transform:uppercase;
+  }
+  .edu-card h3{ font-size:1.1rem; margin-bottom:6px; padding-right:90px; font-weight:600; }
+  .edu-card .institution{ color:var(--copper-dark); font-weight:600; margin-bottom:10px; font-size:0.9rem; }
+  .edu-card p{ color:var(--ink-soft); font-size:0.9rem; }
 
-        .hero-img-wrapper {
-            display: flex;
-            justify-content: center;
-        }
+  .contact-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:36px; }
+  .info-box{ display:flex; flex-direction:column; gap:20px; }
+  .info-item{ display:flex; flex-direction:column; gap:5px; }
+  .info-item label{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--copper);
+    text-transform:uppercase; letter-spacing:0.1em; font-weight:600;
+  }
+  .info-item p, .info-item a{ font-size:1.05rem; color:var(--navy-950); font-weight:600; text-decoration:none; }
+  .info-item a:hover{ color:var(--copper-dark); }
 
-        .hero img {
-            width: 260px;
-            height: 260px;
-            border-radius: 50%;
-            border: 6px solid rgba(255, 152, 0, 0.4);
-            object-fit: cover;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
+  .social-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:4px; }
+  .social-link{
+    display:flex; align-items:center; gap:9px;
+    background:var(--navy-900); color:#fff; padding:10px 16px; border-radius:6px;
+    text-decoration:none; font-size:0.86rem; font-weight:600;
+    transition:background 0.2s, transform 0.15s;
+  }
+  .social-link:hover{ background:var(--copper); transform:translateY(-2px); }
+  .social-link svg{ width:16px; height:16px; flex-shrink:0; }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background: #ff9800;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s, transform 0.2s;
-            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
-        }
+  .contact-form{ background:var(--paper-card); padding:32px; border-radius:var(--radius); box-shadow:var(--shadow); }
+  .form-group{ margin-bottom:18px; }
+  .form-group label{ display:block; margin-bottom:7px; font-weight:600; color:var(--ink-soft); font-size:0.88rem; }
+  .form-group input, .form-group textarea{
+    width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:6px;
+    font-size:0.94rem; font-family:'Inter', sans-serif; color:var(--ink); outline:none;
+    transition:border-color 0.2s, box-shadow 0.2s; background:#fbfcfd;
+  }
+  .form-group input:focus, .form-group textarea:focus{
+    border-color:var(--navy-900); box-shadow:0 0 0 3px rgba(14,44,72,0.1);
+  }
+  .submit-btn{
+    width:100%; padding:13px; background:var(--navy-900); color:#fff; border:none;
+    border-radius:6px; font-size:0.98rem; font-weight:700; cursor:pointer; transition:background 0.2s;
+  }
+  .submit-btn:hover{ background:var(--copper); }
 
-        .btn:hover {
-            background: #e68a00;
-            transform: translateY(-2px);
-        }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--copper); outline-offset:2px;
+  }
 
-        section {
-            max-width: 1100px;
-            margin: auto;
-            padding: 80px 20px;
-        }
+  .whatsapp{
+    position:fixed; bottom:24px; right:24px; background:#25D366; color:#fff;
+    padding:13px 20px; border-radius:50px; font-size:0.9rem; font-weight:700;
+    text-decoration:none; display:flex; align-items:center; gap:9px;
+    box-shadow:0 8px 22px rgba(0,0,0,0.25); z-index:900;
+  }
+  .whatsapp svg{ width:18px; height:18px; }
 
-        .section-header {
-            margin-bottom: 35px;
-            position: relative;
-        }
+  footer{
+    text-align:center; background:var(--navy-950); color:#93A6BA;
+    padding:28px 20px; font-size:0.85rem; font-family:'IBM Plex Mono', monospace;
+    border-top:1px solid rgba(255,255,255,0.08);
+  }
 
-        h2 {
-            color: #0a3d62;
-            font-size: 2rem;
-            display: inline-block;
-        }
+  [data-reveal]{ opacity:0; transform:translateY(16px); transition:opacity 0.55s ease, transform 0.55s ease; }
+  [data-reveal].in-view{ opacity:1; transform:translateY(0); }
 
-        .section-header::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 4px;
-            background: #ff9800;
-            margin-top: 8px;
-            border-radius: 2px;
-        }
+  @media(max-width:968px){
+    .hero-container{ grid-template-columns:1fr; text-align:left; }
+    .about-layout, .contact-grid{ grid-template-columns:1fr; }
+  }
 
-        .about-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            margin-bottom: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-top: 3px solid #0a3d62;
-        }
-
-        .card h3 {
-            color: #0a3d62;
-            margin-bottom: 15px;
-            font-size: 1.25rem;
-        }
-
-        .about-image-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .about-image-card img {
-            width: 100%;
-            max-height: 350px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .skills-tags, .interests-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            list-style: none;
-        }
-
-        .skills-tags li {
-            background: #e3ecf5;
-            color: #0a3d62;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .interests-tags li {
-            background: #fff3e0;
-            color: #e68a00;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .edu-card {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-left: 4px solid #ff9800;
-            position: relative;
-        }
-
-        .edu-card .badge {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            background: #0a3d62;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
-
-        .edu-card h3 {
-            color: #0a3d62;
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            padding-right: 80px;
-        }
-
-        .edu-card .institution {
-            color: #ff9800;
-            font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-        }
-
-        .edu-card p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 40px;
-        }
-
-        .info-box {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .info-item {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .info-item label {
-            font-size: 0.85rem;
-            color: #ff9800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: bold;
-        }
-
-        .info-item p, .info-item a {
-            font-size: 1.1rem;
-            color: #0a3d62;
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #4a5568;
-            font-size: 0.9rem;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 5px;
-            font-size: 0.95rem;
-            color: #333;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: #0a3d62;
-            box-shadow: 0 0 0 3px rgba(10, 61, 98, 0.1);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 12px;
-            background: #0a3d62;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .submit-btn:hover {
-            background: #12527d;
-        }
-
-        .whatsapp {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: #25D366;
-            color: white;
-            padding: 14px 22px;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: bold;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 999;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37,211,102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37,211,102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37,211,102, 0); }
-        }
-
-        footer {
-            text-align: center;
-            background: #0a3d62;
-            color: #cbd5e1;
-            padding: 25px 20px;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        @media(max-width:968px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero-text p {
-                margin: 0 auto 25px auto;
-            }
-            .hero-img-wrapper {
-                order: -1;
-            }
-            .about-layout, .contact-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media(max-width:768px){
-            header {
-                padding: 15px 20px;
-            }
-            nav {
-                position: absolute;
-                top: 58px;
-                right: 0;
-                background: #0a3d62;
-                flex-direction: column;
-                width: 100%;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease-out;
-                gap: 0;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            }
-            nav.active {
-                max-height: 250px;
-                padding: 10px 0;
-            }
-            nav a {
-                padding: 15px 20px;
-                display: block;
-                border-bottom: 1px solid rgba(255,255,255,0.05);
-            }
-            nav a::after {
-                display: none;
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-        }
-    </style>
+  @media(max-width:768px){
+    .header-inner{ padding:14px 20px; }
+    nav{
+      position:fixed; inset:0 0 0 auto; top:0; height:100vh; width:78%; max-width:320px;
+      background:var(--navy-950); flex-direction:column; align-items:flex-start;
+      padding:90px 28px 28px; gap:4px;
+      transform:translateX(100%); transition:transform 0.3s ease;
+      box-shadow:-10px 0 30px rgba(0,0,0,0.3);
+    }
+    nav.active{ transform:translateX(0); }
+    nav a{ width:100%; padding:14px 6px; border-bottom:1px solid rgba(255,255,255,0.06); border-radius:0; font-size:1rem; }
+    nav a.cta-nav{ margin-left:0; margin-top:12px; text-align:center; border-radius:6px; }
+    .menu-toggle{ display:block; }
+    .nav-overlay{
+      display:none; position:fixed; inset:0; background:rgba(10,20,35,0.5); z-index:1050;
+    }
+    .nav-overlay.active{ display:block; }
+  }
+</style>
 </head>
 
 <body>
 
+<a href="#home" class="skip-link">Skip to content</a>
+
 <header>
-    <div class="logo">Patricia<span>.N</span></div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <div class="header-inner">
+    <a href="#home" class="brand">
+      <span class="brand-mark">NP</span>
+      <span class="brand-text">
+        <strong>Nabbanja Patricia</strong>
+        <span>MCIPS &middot; Procurement</span>
+      </span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
     <nav id="navMenu">
-        <a href="#home" onclick="closeMenu()">Home</a>
-        <a href="#about" onclick="closeMenu()">About</a>
-        <a href="#education" onclick="closeMenu()">Education</a>
-        <a href="#contact" onclick="closeMenu()">Contact</a>
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#education" class="nav-link">Credentials</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <a href="cv.pdf" download class="cta-nav">Download CV</a>
     </nav>
+  </div>
 </header>
+<div class="nav-overlay" id="navOverlay"></div>
 
 <section class="hero" id="home">
-    <div class="hero-container">
-        <div class="hero-text">
-            <h1> MCIPS Nabbanja <span>Patricia</span></h1>
-            <h3>Procurement & Supply Chain Professional</h3>
-            <p>Sourcing Specialist dedicated to driving efficiency, executing robust spend analytics, optimizing distribution logistics, and establishing transparent vendor partnerships that protect bottom-line margins.</p>
-            <a href="cv.pdf" download class="btn">Download CV</a>
-        </div>
-        <div class="hero-img-wrapper">
-        <img src="https://github.com/isaacfengamp/mcipsnabbanjapatricia/blob/master/WhatsApp%20Image%202026-06-04%20at%2016.18.44.jpeg?raw=true" alt="Nabbanja Patricia Profile Headshot">
-        </div>
+  <div class="hero-container">
+    <div class="hero-text">
+      <span class="eyebrow">Chartered &middot; MCIPS Full Member</span>
+      <h1>Building supply chains that hold <span class="accent">under pressure.</span></h1>
+      <p class="role">Procurement &amp; Supply Chain Professional</p>
+      <p class="lede">Sourcing specialist dedicated to driving efficiency, executing robust spend analytics, optimizing distribution logistics, and building transparent vendor partnerships that protect the bottom line.</p>
+      <div class="hero-actions">
+        <a href="cv.pdf" download class="btn btn-primary">Download CV</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>MCIPS</strong><span>Chartered Status</span></div>
+        <div class="stat"><strong>MUBS</strong><span>MBA In Progress</span></div>
+        <div class="stat"><strong>EAC</strong><span>Customs &amp; Freight Certified</span></div>
+      </div>
     </div>
+
+    <div class="hero-visual" data-reveal>
+      <div class="manifest-card">
+        <div class="manifest-head">
+          <div>
+            <div class="label">Professional Profile</div>
+            <div class="id">FILE / NP&mdash;PROC&mdash;01</div>
+          </div>
+          <div class="label">Kampala, UG</div>
+        </div>
+        <div class="manifest-photo-wrap">
+          <img src="https://github.com/isaacfengamp/mcipsnabbanjapatricia/blob/master/WhatsApp%20Image%202026-06-04%20at%2016.18.44.jpeg?raw=true" alt="Nabbanja Patricia profile headshot">
+          <div class="stamp">MCIPS<br>Certified</div>
+        </div>
+        <div class="manifest-rows">
+          <div class="manifest-row"><span class="k">Designation</span><span class="v">Sourcing Specialist</span></div>
+          <div class="manifest-row"><span class="k">Focus areas</span><span class="v">Strategic Sourcing</span></div>
+          <div class="manifest-row"><span class="k">Status</span><span class="v">Open to opportunities</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="about">
-    <div class="section-header">
-        <h2>About Me</h2>
-    </div>
-    <div class="about-layout">
-        <div>
-            <div class="card">
-                <p style="margin-bottom: 15px;">
-                    I am a highly analytical Procurement and Supply Chain Specialist with clear competency across end-to-end operational systems. My professional background centers around designing robust strategic sourcing models, performing total cost of ownership assessments, and enforcing compliance metrics across distribution workflows.
-                </p>
-                <p>
-                    With an acute focus on identifying operational friction points, I actively translate bulk data into structured supply chain interventions. My execution style centers on creating resilient, scalable solutions that drive cost reduction while securing supply continuity.
-                </p>
-            </div>
-            
-            <div class="card">
-                <h3>Core Competencies</h3>
-                <ul class="skills-tags">
-                    <li>Strategic Sourcing</li>
-                    <li>Contract Negotiation</li>
-                    <li>Cost Management</li>
-                    <li>Analytical Sourcing</li>
-                    <li>Inventory Control</li>
-                    <li>Resilience & Flexibility</li>
-                </ul>
-            </div>
-        </div>
+  <div class="section-header" data-reveal>
+    <span class="section-eyebrow">About</span>
+    <h2>A closer look at how I work</h2>
+  </div>
+  <div class="about-layout">
+    <div data-reveal>
+      <div class="card">
+        <p>I am a highly analytical Procurement and Supply Chain Specialist with clear competency across end-to-end operational systems. My professional background centers around designing robust strategic sourcing models, performing total cost of ownership assessments, and enforcing compliance metrics across distribution workflows.</p>
+        <p>With an acute focus on identifying operational friction points, I actively translate bulk data into structured supply chain interventions. My execution style centers on creating resilient, scalable solutions that drive cost reduction while securing supply continuity.</p>
+      </div>
 
-        <div class="about-image-card">
-            <img src="https://github.com/isaacfengamp/mcipsnabbanjapatricia/blob/master/WhatsApp%20Image%202026-06-04%20at%2016.21.38.jpeg?raw=true" alt="Nabbanja Patricia Professional Profile">
-            <div class="card" style="width: 100%; margin-bottom: 0;">
-                <h3>Personal Interests</h3>
-                <ul class="interests-tags">
-                    <li>Traveling & Exploring</li>
-                    <li>Fitness & Wellness</li>
-                    <li> Professional Networking</li>
-                    <li>Music & Social Events</li>
-                    <li>Personal Development</li>
-                </ul>
-            </div>
-        </div>
+      <div class="card">
+        <h3>Core Competencies</h3>
+        <ul class="skills-tags">
+          <li>Strategic Sourcing</li>
+          <li>Contract Negotiation</li>
+          <li>Cost Management</li>
+          <li>Analytical Sourcing</li>
+          <li>Inventory Control</li>
+          <li>Resilience &amp; Flexibility</li>
+        </ul>
+      </div>
     </div>
+
+    <div class="about-image-card" data-reveal>
+      <img src="https://github.com/isaacfengamp/mcipsnabbanjapatricia/blob/master/WhatsApp%20Image%202026-06-04%20at%2016.21.38.jpeg?raw=true" alt="Nabbanja Patricia professional profile">
+      <div class="card" style="width:100%; margin-bottom:0;">
+        <h3>Personal Interests</h3>
+        <ul class="interests-tags">
+          <li>Traveling &amp; Exploring</li>
+          <li>Fitness &amp; Wellness</li>
+          <li>Professional Networking</li>
+          <li>Music &amp; Social Events</li>
+          <li>Personal Development</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="education">
-    <div class="section-header">
-        <h2>Education & Credentials</h2>
+  <div class="section-header" data-reveal>
+    <span class="section-eyebrow">Credentials</span>
+    <h2>Education &amp; Certifications</h2>
+  </div>
+  <div class="education-grid">
+    <div class="edu-card" data-reveal>
+      <span class="badge">Postgraduate</span>
+      <h3>Master of Business Administration (MBA)</h3>
+      <div class="institution">Makerere University Business School (MUBS) &mdash; Currently Pursuing</div>
+      <p>Currently pursuing an MBA, strengthening expertise in strategic management, leadership, business analytics, financial decision-making, and organisational development.</p>
     </div>
-    <div class="education-grid">
-        <div class="edu-card">
-            <span class="badge">Postgraduate</span>
-            <h3>Master of Business Administration (MBA)</h3>
-            <div class="institution">Makerere University Business School (MUBS) — Currently Pursuing</div>
-            <p>Currently pursuing an MBA, strengthening expertise in strategic management, leadership, business analytics, financial decision-making, and organisational development.</p>
-        </div>
-        <div class="edu-card">
-            <span class="badge">MCIPS</span>
-            <h3>Chartered Institute of Procurement & Supply (CIPS)</h3>
-            <div class="institution">Full Member (MCIPS) — Chartered Procurement Professional</div>
-            <p>Successfully attained Full MCIPS membership, demonstrating professional competence in strategic procurement, ethical sourcing, contract and supplier management, and global supply chain leadership.</p>
-        </div>
-
-         <div class="edu-card">
-            <span class="badge">Certificate</span>
-            <h3>East African  Customs Freight Forwarding Practicing Certificate</h3>
-            <div class="institution">Uganda Revenue Authority/ FEAFFA</div>
-            <p>Gained critical training across warehouse mechanics, spend analysis models, transportation strategies, and quantitative procurement workflows.</p>
-        </div>
-        
-        <div class="edu-card">
-            <span class="badge">Degree</span>
-            <h3>Bachelor of Procurement & Logistics Management</h3>
-            <div class="institution">Makerere University</div>
-            <p>Gained critical training across warehouse mechanics, spend analysis models, transportation strategies, and quantitative procurement workflows.</p>
-        </div>
-
-        <div class="edu-card">
-            <span class="badge">UACE</span>
-            <h3>Uganda Advanced Certificate of Education</h3>
-            <div class="institution">Lubiri Secondary School</div>
-            <p>Completed higher secondary education, laying down advanced quantitative reasoning and corporate communication fundamentals.</p>
-        </div>
+    <div class="edu-card" data-reveal>
+      <span class="badge">MCIPS</span>
+      <h3>Chartered Institute of Procurement &amp; Supply (CIPS)</h3>
+      <div class="institution">Full Member (MCIPS) &mdash; Chartered Procurement Professional</div>
+      <p>Successfully attained Full MCIPS membership, demonstrating professional competence in strategic procurement, ethical sourcing, contract and supplier management, and global supply chain leadership.</p>
     </div>
+    <div class="edu-card" data-reveal>
+      <span class="badge">Certificate</span>
+      <h3>East African Customs Freight Forwarding Practicing Certificate</h3>
+      <div class="institution">Uganda Revenue Authority / FEAFFA</div>
+      <p>Gained critical training across warehouse mechanics, spend analysis models, transportation strategies, and quantitative procurement workflows.</p>
+    </div>
+    <div class="edu-card" data-reveal>
+      <span class="badge">Degree</span>
+      <h3>Bachelor of Procurement &amp; Logistics Management</h3>
+      <div class="institution">Makerere University</div>
+      <p>Gained critical training across warehouse mechanics, spend analysis models, transportation strategies, and quantitative procurement workflows.</p>
+    </div>
+    <div class="edu-card" data-reveal>
+      <span class="badge">UACE</span>
+      <h3>Uganda Advanced Certificate of Education</h3>
+      <div class="institution">Lubiri Secondary School</div>
+      <p>Completed higher secondary education, laying down advanced quantitative reasoning and corporate communication fundamentals.</p>
+    </div>
+  </div>
 </section>
 
 <section id="contact">
-    <div class="section-header">
-        <h2>Get In Touch</h2>
-    </div>
-    <div class="contact-grid">
-        <div class="info-box">
-            <div class="card" style="width: 100%;">
-                <div class="info-item" style="margin-bottom: 20px;">
-                    <label>Professional Designation</label>
-                    <p>MCIPS Nabbanja Patricia</p>
-                </div>
-                <div class="info-item" style="margin-bottom: 20px;">
-                    <label>Direct Line</label>
-                    <a href="tel:+256754399094">+256 754 399 094</a>
-                </div>
-                <div class="info-item">
-                    <label>Email Address</label>
-                    <a href="mailto:nabanja@gmail.com">nabbanjapatricia@gmail.com</a>
-                </div>
-            </div>
+  <div class="section-header" data-reveal>
+    <span class="section-eyebrow">Contact</span>
+    <h2>Get In Touch</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="info-box" data-reveal>
+      <div class="card" style="width:100%;">
+        <div class="info-item" style="margin-bottom:20px;">
+          <label>Professional Designation</label>
+          <p>MCIPS Nabbanja Patricia</p>
         </div>
+        <div class="info-item" style="margin-bottom:20px;">
+          <label>Direct Line</label>
+          <a href="tel:+256754399094">+256 754 399 094</a>
+        </div>
+        <div class="info-item" style="margin-bottom:22px;">
+          <label>Email Address</label>
+          <a href="mailto:nabbanjapatricia@gmail.com">nabbanjapatricia@gmail.com</a>
+        </div>
+        <div class="info-item">
+          <label>Find Me On</label>
+          <div class="social-row">
+            <a class="social-link" href="https://www.linkedin.com/in/nabbanjapatricia" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+              LinkedIn
+            </a>
+            <a class="social-link" href="https://x.com/nabbanjapatric" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.68L23.3 22h-6.9l-5.4-7.06L4.8 22H1.7l8.14-9.3L1 2h7.1l4.9 6.47L18.9 2zm-1.2 18h1.9L7.4 4h-2l12.3 16z"/></svg>
+              X / Twitter
+            </a>
+            <a class="social-link" href="https://wa.me/256754399094" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.5-1.2l-.3-.2-3.3.9.9-3.2-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        <div class="contact-form">
-            <form action="#" method="POST">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required placeholder="Enter your email address">
-                </div>
-                <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <input type="text" id="subject" name="subject" required placeholder="What is this regarding?">
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" required placeholder="Write your message here..."></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
+    <div class="contact-form" data-reveal>
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required placeholder="Enter your full name">
         </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required placeholder="Enter your email address">
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required placeholder="What is this regarding?">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Write your message here..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
     </div>
+  </div>
 </section>
 
 <footer>
-    <p>&copy; 2026 MCPIS Nabbanja Patricia. All Rights Reserved.</p>
+  <p>&copy; 2026 MCIPS Nabbanja Patricia. All Rights Reserved.</p>
 </footer>
 
-<a href="https://wa.me/256754399094" target="_blank" class="whatsapp">
-    Chat on WhatsApp
+<a href="https://wa.me/256754399094" target="_blank" rel="noopener" class="whatsapp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.5-1.2l-.3-.2-3.3.9.9-3.2-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+  Chat on WhatsApp
 </a>
 
 <script>
-function toggleMenu() {
-    document.getElementById("navMenu").classList.toggle("active");
-}
-function closeMenu() {
-    document.getElementById("navMenu").classList.remove("active");
-}
+(function(){
+  var toggle = document.getElementById('menuToggle');
+  var nav = document.getElementById('navMenu');
+  var overlay = document.getElementById('navOverlay');
+  var links = document.querySelectorAll('.nav-link');
+
+  function openMenu(){
+    nav.classList.add('active');
+    overlay.classList.add('active');
+    toggle.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+  }
+  function closeMenu(){
+    nav.classList.remove('active');
+    overlay.classList.remove('active');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+  toggle.addEventListener('click', function(){
+    nav.classList.contains('active') ? closeMenu() : openMenu();
+  });
+  overlay.addEventListener('click', closeMenu);
+  links.forEach(function(l){ l.addEventListener('click', closeMenu); });
+
+  // Scroll-spy active nav link
+  var sections = document.querySelectorAll('section[id], .hero[id]');
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        links.forEach(function(l){ l.classList.remove('active'); });
+        var active = document.querySelector('.nav-link[href="#' + entry.target.id + '"]');
+        if(active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(function(s){ observer.observe(s); });
+
+  // Reveal on scroll
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(function(el){ revealObserver.observe(el); });
+})();
 </script>
 
 </body>
